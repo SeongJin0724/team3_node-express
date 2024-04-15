@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const nunjucks = require('nunjucks');
-
+const PORT = process.env.PORT || 4000;
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 
@@ -30,6 +30,9 @@ app.use('/', indexRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
+});
+app.listen(PORT, () => {
+  console.log(`Server On : http://localhost:${PORT}`);
 });
 
 // error handler
